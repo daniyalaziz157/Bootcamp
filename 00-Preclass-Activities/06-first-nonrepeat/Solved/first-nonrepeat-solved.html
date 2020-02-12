@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+// Write a function that takes in a string and outputs the *first* occurrence of a character that does not repeat itself in that string.
+//
+// Ex:
+// Input: "the quick brown fox jumps over the calm kitten quietly"
+// Output: "b"
+//
+// Input: "this hat is the greatest!"
+// Output: "g"
+//
+// Input: "what a wonderful day it has been!"
+// Output: "o"
+
+function firstNonRepeatChar(str) {
+    var charCount = {};
+
+    for(var i = 0; i < str.length; i++) {
+        var char = str[i];
+        if(charCount[char]) {
+        charCount[char]++;
+        } else {
+            charCount[char] = 1;
+        }
+    }
+
+    for(var j in charCount) {
+        if(charCount[j] == 1) {
+            return j;
+        }
+    }
+}
+
+
+for(var i = 0; i < str.length; i++) {
+    var foundChar = str[i];
+    var didFind = false;
+
+    for(var j = i + 1; j < str.length; j++) {
+        if(str[i] == str[j]) {
+            didFind = true;
+        }
+    }
+
+    if(!didFind) {
+        return foundChar;
+    }
+}
+
+console.log(firstNonRepeatChar("the quick brown fox jumps over the calm kitten quietly"));
+console.log(firstNonRepeatChar("this hat is the greatest!"));
+console.log(firstNonRepeatChar("what a wonderful day it has been!"));
+</script>
+</body>
+</html>
